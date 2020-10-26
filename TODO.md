@@ -1,8 +1,10 @@
-- [ ] $5 + 10CHF = $10 (レートが2:1の場合)
-- [ ] $5 + $5 = $10
+- [x] $5 + 10CHF = $10 (レートが2:1の場合)
+- [x] $5 + $5 = $10
 - [ ] $5 + $5 が Money を返す
 - [x] Bank.reduce(Money)
-- [ ] Money を変換して換算を行う
+- [x] Money を変換して換算を行う
+- [x] Sum.plus
+- [ ] Expression.times
 
 - [ ] Money の丸め処理どうする?
 - [ ] hashCode()
