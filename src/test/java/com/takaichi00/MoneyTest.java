@@ -105,10 +105,4 @@ public class MoneyTest {
     Money result = bank.reduce(sum, "USD");
     assertEquals(Money.dollar(20), result);
   }
-
-  @Test
-  void testPlusSameCurrencyReturnMoney() {
-    Expression sum = Money.dollar(1).plus(Money.dollar(1));
-    assertTrue(sum instanceof Money);
-  }
 }
