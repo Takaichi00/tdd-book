@@ -8,10 +8,14 @@ import org.junit.jupiter.api.Test;
 public class MoneyTest {
 
   private Bank bank;
+  private Expression fiveBucks;
+  private Expression tenFrances;
 
   @BeforeEach
   void beforeEach() {
     bank = new Bank();
+    fiveBucks = Money.dollar(5);
+    tenFrances = Money.franc(10);
   }
 
   @Test
@@ -78,17 +82,13 @@ public class MoneyTest {
 
   @Test
   void testMixedAddition() {
-    Expression fiveBucks = Money.dollar(5);
-    Expression tenFrancs = Money.franc(10);
     bank.addRate("CHF", "USD", 2);
-    Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+    Money result = bank.reduce(fiveBucks.plus(tenFrances), "USD");
     assertEquals(Money.dollar(10), result);
   }
 
   @Test
   public void testSumPlusMoney() {
-    Expression fiveBucks = Money.dollar(5);
-    Expression tenFrances = Money.franc(10);
     bank.addRate("CHF", "USD", 2);
     Expression sum = new Sum(fiveBucks, tenFrances).plus(fiveBucks);
     Money result = bank.reduce(sum, "USD");
@@ -97,8 +97,6 @@ public class MoneyTest {
 
   @Test
   void testSumTimes() {
-    Expression fiveBucks = Money.dollar(5);
-    Expression tenFrances = Money.franc(10);
     bank.addRate("CHF", "USD", 2);
     Expression sum = new Sum(fiveBucks, tenFrances).times(2);
     Money result = bank.reduce(sum, "USD");
